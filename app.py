@@ -1,5 +1,4 @@
 import streamlit as st
-import match as match
 from pandas import read_csv
 from streamlit_player import st_player
 
@@ -21,14 +20,14 @@ if opcao == 'Leitor de Arquivos':
 
     if arquivo:
         print(arquivo.type)
-        match arquivo.type.split('/'):
-            case 'image' , _:
-                st.image(arquivo)
-            case 'text' ,  'x-python':
-                st.code(arquivo.read().decode())
-            case 'text' , 'csv':
-                df = read_csv(arquivo)
-                st.dataframe(df)
+        file_type = arquivo.type.split('/')
+        if file_type[0] == 'image':
+            st.image(arquivo)
+        elif file_type[0] == 'text' and file_type[1] == 'x-python':
+            st.code(arquivo.read().decode())
+        elif file_type[0] == 'text' and file_type[1] == 'csv':
+            df = read_csv(arquivo)
+            st.dataframe(df)
     else:
         st.error("Sem arquivos")
 
@@ -40,14 +39,14 @@ if opcao == 'Leitor de Arquivos':
 
             if arquivo:
                 print(arquivo.type)
-                match arquivo.type.split('/'):
-                    case 'image' , _:
-                        st.image(arquivo)
-                    case 'text' ,  'x-python':
-                        st.code(arquivo.read().decode())
-                    case 'text' , 'csv':
-                        df = read_csv(arquivo)
-                        st.dataframe(df)
+                file_type = arquivo.type.split('/')
+                if file_type[0] == 'image':
+                    st.image(arquivo)
+                elif file_type[0] == 'text' and file_type[1] == 'x-python':
+                    st.code(arquivo.read().decode())
+                elif file_type[0] == 'text' and file_type[1] == 'csv':
+                    df = read_csv(arquivo)
+                    st.dataframe(df)
             else:
                 st.error("Sem arquivos")
         
@@ -146,5 +145,5 @@ elif opcao == 'Player de Video':
             arquivo = st.file_uploader('', type= ['mp4' , 'mkv', 'webm'])
 
             st.video(arquivo)
-
+                
         ''', language='python')
