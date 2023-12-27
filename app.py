@@ -5,9 +5,25 @@ barra = st.sidebar
 
 opcao = barra.selectbox('Menu', ['Inicio', 'Leitor de Arquivos', 'Player de Audio', 'Player de Video'])
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~Construção do Menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+if opcao == 'Inicio':
+
+    st.markdown('''
+ 
+    # Bem-vindo
+            
+    Algumas aplicações utilizando Streamlit.
+    
+    ''')
+
+    st.markdown('### Documentação do Framework')
+
+    st.link_button("Streamlit", "https://docs.streamlit.io/")
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~Construção do Leitor de Arquivos~~~~~~~~~~~~~~~~~~~~~~~
 
-if opcao == 'Leitor de Arquivos':
+elif opcao == 'Leitor de Arquivos':
 
     st.markdown('''   
             
@@ -50,22 +66,6 @@ if opcao == 'Leitor de Arquivos':
                 st.error("Sem arquivos")
         
         ''', language='python')
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~Construção do Menu~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-elif opcao == 'Inicio':
-
-    st.markdown('''
- 
-    # Bem-vindo
-            
-    Algumas aplicações utilizando Streamlit.
-    
-    ''')
-
-    st.markdown('### Documentação do Framework')
-
-    st.link_button("Streamlit", "https://docs.streamlit.io/")
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~Construção do Player de Audio~~~~~~~~~~~~~~~~~~~~~~~~~~~
