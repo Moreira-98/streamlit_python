@@ -1,6 +1,5 @@
 import streamlit as st
 from pandas import read_csv
-from streamlit_player import st_player
 
 barra = st.sidebar
 
@@ -102,48 +101,23 @@ elif opcao == 'Player de Video':
 
     st.markdown('### Player de VIdeo :clapper:')
 
-    st.markdown('Suba um arquivo para assistir ou cole um link de um video do YouTube')
+    st.markdown('Suba um arquivo para assistir')
 
-    decisao = st.radio('Escolha uma opção para visualizar seu video: ', ['Link do YouTube', 'Upload de Arquivo'], index=None)
 
-    if decisao == 'Link do YouTube':
-        
-        st.markdown('Cole o link de algum video do YouTube e aperte o "Enter"')
+    arquivo = st.file_uploader('', type= ['mp4' , 'mkv', 'webm'])
 
-        link_video = st.text_input("Link: ")
-
-        st_player(link_video)
-
-    elif decisao == 'Upload de Arquivo':
-
-        arquivo = st.file_uploader('', type= ['mp4' , 'mkv', 'webm'])
-
-        st.video(arquivo)
+    st.video(arquivo)
 
     with st.expander('Código Fonte'):
 
         st.code('''
 
-        elif opcao == 'Player de Video':
+        st.markdown('### Player de VIdeo :clapper:')
 
-            st.markdown('### Player de VIdeo :clapper:')
+        st.markdown('Suba um arquivo para assistir')
 
-            st.markdown('Suba um arquivo para assistir ou cole um link de um video do YouTube')
+        arquivo = st.file_uploader('', type= ['mp4' , 'mkv', 'webm'])
 
-            decisao = st.radio('Escolha uma opção para visualizar seu video: ', ['Link do YouTube', 'Upload de Arquivo'], index=None)
-
-        if decisao == 'Link do YouTube':
-            
-            st.markdown('Cole o link de algum video do YouTube')
-
-            link_video = st.text_input('Link:')
-
-            st_player(link_video)
-
-        elif decisao == 'Upload de Arquivo':
-
-            arquivo = st.file_uploader('', type= ['mp4' , 'mkv', 'webm'])
-
-            st.video(arquivo)
+        st.video(arquivo)
                 
         ''', language='python')
